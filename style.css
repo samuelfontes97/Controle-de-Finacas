@@ -1,0 +1,641 @@
+/* --- TEMA "VIBRANT SUNSET" (SUAVIZADO) & VARIÁVEIS --- */
+:root {
+    --primary-color: #7b2cbf;
+    /* Roxo um pouco mais suave */
+    --primary-color-rgb: 123, 44, 191;
+    --secondary-color: #c71f66;
+    /* Rosa mais fechado */
+    --accent-color: #fca311;
+    /* Laranja */
+    --background-color: #24243e;
+    /* Fundo azul-acinzentado escuro */
+    --surface-color: #3a3a5a;
+    /* Cor dos cards */
+    --text-color: #f0f0f5;
+    /* Texto quase branco */
+    --text-color-muted: #b0b0d0;
+    /* Texto secundário */
+    --success-color: #2a9d8f;
+    /* Verde-água */
+    --error-color: #e76f51;
+    /* Laranja-avermelhado */
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+    --border-radius: 16px;
+    /* Mais arredondado */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* --- PÁGINA DE LOGIN --- */
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background: linear-gradient(45deg, var(--primary-color), #1a1a2e);
+}
+
+.login-container {
+    width: 100%;
+    max-width: 420px;
+    background-color: var(--surface-color);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.login-container h1 {
+    font-size: 3rem;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 10px var(--accent-color);
+}
+
+.login-container h2 {
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.login-container p {
+    margin-bottom: 2rem;
+    color: var(--text-color-muted);
+}
+
+.input-group.hidden {
+    display: none;
+}
+
+.toggle-form {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.toggle-form a {
+    color: var(--accent-color);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+
+/* --- BOTÕES E INPUTS GERAIS --- */
+.input-group {
+    text-align: left;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.input-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--text-color-muted);
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 14px 15px;
+    border-radius: 8px;
+    border: 1px solid #5a5a8a;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    background-color: #2e2e48;
+    color: var(--text-color);
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.3);
+}
+
+.error-message {
+    color: var(--error-color);
+    font-size: 0.8rem;
+    display: none;
+    margin-top: 4px;
+}
+
+input.invalid,
+select.invalid {
+    border-color: var(--error-color);
+}
+
+.btn {
+    position: relative;
+    width: 100%;
+    padding: 15px;
+    border: none;
+    background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-height: 53px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(var(--primary-color-rgb), 0.4);
+}
+
+.btn-expense {
+    background: linear-gradient(90deg, #f77f00, #d62828);
+}
+
+/* --- LOADING STATE DO BOTÃO --- */
+.btn-spinner {
+    display: none;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: var(--text-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.btn--loading .btn-text {
+    visibility: hidden;
+}
+
+.btn--loading .btn-spinner {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.btn--loading {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* --- COMPONENTES COMPARTILHADOS --- */
+.main-header {
+    background-color: var(--surface-color);
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.header-content {
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-content h1 {
+    color: var(--text-color);
+    font-size: 1.5rem;
+}
+
+.header-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.btn-secondary {
+    padding: 10px 20px;
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+.btn-tertiary {
+    background: #4a4a70;
+    color: var(--text-color);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-tertiary:hover {
+    background: #5a5a80;
+}
+
+.card {
+    background-color: var(--surface-color);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* --- PÁGINA DO DASHBOARD --- */
+.dashboard-container {
+    max-width: 1600px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    display: grid;
+    gap: 2rem;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.summary-grid .card {
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.summary-grid .card:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-5px);
+}
+
+.summary-grid .card-link span {
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+    position: absolute;
+    bottom: 1.5rem;
+    right: 2rem;
+    font-weight: 500;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.summary-grid .card-link:hover span {
+    opacity: 1;
+}
+
+.summary-grid .card h3 {
+    margin-bottom: 1rem;
+    font-weight: 500;
+    color: var(--text-color-muted);
+}
+
+.summary-grid .card p {
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+
+#total-balance,
+.goals-color {
+    color: var(--accent-color);
+}
+
+.income-color {
+    color: var(--success-color);
+}
+
+.expenses-color {
+    color: var(--error-color);
+}
+
+.charts-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+.chart-container h3 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.chart-container canvas {
+    max-height: 400px;
+}
+
+/* --- PÁGINAS DE TRANSAÇÕES --- */
+.transaction-container {
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 2.5fr;
+    gap: 2rem;
+}
+
+.table-wrapper {
+    max-height: 450px;
+    overflow-y: auto;
+}
+
+.transaction-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.transaction-table th,
+.transaction-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #5a5a8a;
+    white-space: nowrap;
+}
+
+.transaction-table th {
+    background-color: #4a4a70;
+    font-weight: 500;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.transaction-table tbody tr:hover {
+    background-color: #4a4a70;
+}
+
+.transaction-table td:nth-child(2) {
+    font-weight: 500;
+}
+.page-receitas .transaction-table td:nth-child(2) { color: var(--success-color); }
+.page-gastos .transaction-table td:nth-child(2) { color: var(--error-color); }
+
+
+.action-buttons button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 5px;
+    margin: 0 5px;
+    font-size: 1.1rem;
+}
+
+.action-buttons .edit-btn {
+    color: var(--accent-color);
+}
+
+.action-buttons .delete-btn {
+    color: var(--error-color);
+}
+
+/* --- FILTROS --- */
+.filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: flex-end;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #5a5a8a;
+}
+
+.filter-container .input-group {
+    margin-bottom: 0;
+    flex-grow: 1;
+}
+
+/* --- ANIMAÇÕES DA TABELA --- */
+.row-slide-in {
+    animation: slideInDown 0.5s ease-out forwards;
+}
+
+.row-fade-out {
+    animation: fadeOut 0.4s ease-out forwards;
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+}
+
+/* --- PÁGINA DE METAS --- */
+.goals-list-container {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.goal-card {
+    background-color: #4a4a70;
+    padding: 1.5rem;
+    border-radius: 10px;
+}
+
+.goal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.goal-header h4 {
+    font-size: 1.2rem;
+}
+
+.goal-details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-color-muted);
+}
+
+.progress-bar {
+    width: 100%;
+    background-color: #2e2e48;
+    border-radius: 5px;
+    height: 20px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    border-radius: 5px;
+    transition: width 0.5s ease-in-out;
+    text-align: center;
+    color: var(--text-color);
+    font-weight: bold;
+    font-size: 0.8rem;
+    line-height: 20px;
+}
+
+/* --- NOTIFICAÇÕES (TOASTS) --- */
+#toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    padding: 15px 20px;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 500;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    animation: toast-in 0.5s ease;
+}
+
+.toast.success {
+    background-color: var(--success-color);
+}
+
+.toast.error {
+    background-color: var(--error-color);
+}
+
+.toast.fade-out {
+    animation: toast-out 0.5s ease forwards;
+}
+
+@keyframes toast-in {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes toast-out {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* --- MODAIS --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: var(--surface-color);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    width: 90%;
+    max-width: 500px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: modal-in 0.3s ease-out;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.modal-actions button {
+    width: auto;
+}
+
+@keyframes modal-in {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 1200px) {
+
+    .transaction-container,
+    .charts-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .summary-grid .card p {
+        font-size: 1.8rem;
+    }
+
+    .filter-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
