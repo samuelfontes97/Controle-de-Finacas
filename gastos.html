@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gastos - Controle Financeiro</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚓</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-gastos">
+    <header class="main-header">
+        <div class="header-content">
+            <h1>⚓ Gestão de Gastos</h1>
+            <a href="dashboard.html" class="btn-secondary">Voltar ao Dashboard</a>
+        </div>
+    </header>
+
+    <main class="transaction-container">
+        <section class="card transaction-form-section">
+            <h3>Adicionar Novo Gasto</h3>
+            <form id="transaction-form" novalidate>
+                <div class="input-group">
+                    <label for="description">Descrição</label>
+                    <input type="text" id="description" placeholder="Ex: Aluguel" required>
+                    <small class="error-message"></small>
+                </div>
+                <div class="input-group">
+                    <label for="amount">Valor (R$)</label>
+                    <input type="number" id="amount" step="0.01" placeholder="Ex: 1500.00" required>
+                    <small class="error-message"></small>
+                </div>
+                <div class="input-group">
+                    <label for="date">Data</label>
+                    <input type="date" id="date" required>
+                    <small class="error-message"></small>
+                </div>
+                <div class="input-group">
+                    <label for="category">Categoria</label>
+                    <select id="category" required>
+                        <option value="">Selecione...</option>
+                    </select>
+                    <small class="error-message"></small>
+                </div>
+                <button type="submit" class="btn btn-expense">
+                    <span class="btn-text">Adicionar Gasto</span>
+                    <span class="btn-spinner"></span>
+                </button>
+            </form>
+        </section>
+
+        <section class="card transaction-list-section">
+            <h3>Histórico de Gastos</h3>
+            <div class="filter-container">
+                <div class="input-group">
+                    <label for="filter-month">Filtrar por Mês/Ano</label>
+                    <input type="month" id="filter-month">
+                </div>
+                <div class="input-group">
+                    <label for="filter-category">Filtrar por Categoria</label>
+                    <select id="filter-category">
+                        <option value="all">Todas</option>
+                    </select>
+                </div>
+                <button id="clear-filters-btn" class="btn-tertiary">Limpar Filtros</button>
+            </div>
+            <div class="table-wrapper">
+                <table class="transaction-table">
+                    <thead>
+                        <tr>
+                            <th>Descrição</th>
+                            <th>Valor</th>
+                            <th>Categoria</th>
+                            <th>Data</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transaction-list"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <div id="edit-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <h2>Editar Transação</h2>
+            <form id="edit-form" novalidate>
+                <input type="hidden" id="edit-id">
+                <div class="input-group">
+                    <label for="edit-description">Descrição</label>
+                    <input type="text" id="edit-description" required>
+                </div>
+                <div class="input-group">
+                    <label for="edit-amount">Valor (R$)</label>
+                    <input type="number" id="edit-amount" step="0.01" required>
+                </div>
+                <div class="input-group">
+                    <label for="edit-date">Data</label>
+                    <input type="date" id="edit-date" required>
+                </div>
+                <div class="input-group">
+                    <label for="edit-category">Categoria</label>
+                    <select id="edit-category" required></select>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" id="cancel-edit-btn" class="btn-secondary">Cancelar</button>
+                    <button type="submit" class="btn">
+                        <span class="btn-text">Salvar Alterações</span>
+                        <span class="btn-spinner"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <div id="toast-container"></div>
+    <div id="confirmation-modal" class="modal-overlay" style="display: none;"></div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

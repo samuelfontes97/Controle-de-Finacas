@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Controle Financeiro</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚓</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="dashboard-page">
+
+    <header class="main-header">
+        <div class="header-content">
+            <h1 id="dashboard-title">⚓ Painel Financeiro</h1>
+            <div class="header-actions">
+                <button id="export-csv-btn" class="btn-tertiary">Exportar Tudo (CSV)</button>
+                <button id="logout-btn" class="btn-secondary">Sair</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+        <section class="summary-grid">
+            <div class="card" id="card-balance">
+                <h3>Saldo Total</h3>
+                <p id="total-balance">R$ 0,00</p>
+            </div>
+            <a href="receitas.html" class="card card-link">
+                <h3>Receitas (Entradas)</h3>
+                <p id="total-income" class="income-color">R$ 0,00</p>
+                <span>Ver detalhes</span>
+            </a>
+            <a href="gastos.html" class="card card-link">
+                <h3>Gastos (Saídas)</h3>
+                <p id="total-expenses" class="expenses-color">R$ 0,00</p>
+                <span>Ver detalhes</span>
+            </a>
+            <a href="metas.html" class="card card-link">
+                <h3>Metas Financeiras</h3>
+                <p id="goals-progress" class="goals-color">🏁</p>
+                <span>Ver detalhes</span>
+            </a>
+        </section>
+
+        <section class="charts-grid">
+            <div class="chart-container card">
+                <h3>Visão Geral Mensal</h3>
+                <canvas id="financial-chart"></canvas>
+            </div>
+            <div class="chart-container card">
+                <h3>Gastos por Categoria</h3>
+                <canvas id="category-chart"></canvas>
+            </div>
+        </section>
+    </main>
+    
+    <div id="toast-container"></div>
+    <div id="confirmation-modal" class="modal-overlay" style="display: none;"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
